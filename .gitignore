@@ -1,3 +1,5 @@
+# Fuente en claro: nunca se sube. Solo se publica cifrada.
+fuente/
 .DS_Store
 node_modules/
 *.log
