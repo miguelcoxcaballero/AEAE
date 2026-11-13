@@ -55,7 +55,12 @@ const acceso = `<!doctype html>
   button:disabled { opacity: .6; cursor: wait; }
   input:focus-visible, button:focus-visible { outline: 3px solid #3f5fc4; outline-offset: 2px; }
   #aviso { min-height: 20px; margin: 12px 0 0; color: #b3261e; }
+  .recordada form { display: none; }
 </style>
+<script>
+  // Si la contraseña ya se puso en esta pestaña, no se enseña el formulario al recargar.
+  try { if (sessionStorage.getItem('aeae-llave')) document.documentElement.className = 'recordada'; } catch (e) {}
+</script>
 </head>
 <body>
 <form id="acceso">
@@ -75,6 +80,11 @@ const acceso = `<!doctype html>
   var sal = bytes.slice(0, 16), iv = bytes.slice(16, 28), cuerpo = bytes.slice(28);
   var form = document.getElementById('acceso'), aviso = document.getElementById('aviso'), boton = document.getElementById('entrar');
 
+  var cargada = new Promise(function (ok) {
+    if (document.readyState === 'complete') ok();
+    else window.addEventListener('load', function () { setTimeout(ok, 0); });
+  });
+
   function importar(crudo) {
     return crypto.subtle.importKey('raw', crudo, 'AES-GCM', false, ['decrypt']);
   }
@@ -91,7 +101,11 @@ const acceso = `<!doctype html>
       // Se recuerda solo mientras dure la pestaña, para no pedirla al recargar.
       try { sessionStorage.setItem(MEMORIA, btoa(String.fromCharCode.apply(null, new Uint8Array(crudo)))); } catch (e) {}
       var pagina = new TextDecoder().decode(claro);
-      document.open(); document.write(pagina); document.close();
+      // Hay que esperar a que esta página termine de cargarse: si no, el navegador
+      // añade la web debajo del formulario en vez de sustituirlo.
+      return cargada.then(function () {
+        document.open(); document.write(pagina); document.close();
+      });
     });
   }
 
@@ -105,7 +119,7 @@ const acceso = `<!doctype html>
     var guardada = sessionStorage.getItem(MEMORIA);
     if (guardada) {
       abrir(Uint8Array.from(atob(guardada), function (c) { return c.charCodeAt(0); }).buffer)
-        .catch(function () { sessionStorage.removeItem(MEMORIA); });
+        .catch(function () { sessionStorage.removeItem(MEMORIA); document.documentElement.className = ''; });
     }
   } catch (e) {}
 
