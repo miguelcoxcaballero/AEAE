@@ -4,52 +4,196 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>AEAE · Web de pruebas</title>
+  <title>AEAE · Trabajo recurrente de cada congreso</title>
+  <link rel="icon" href="assets/logo-aeae.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#">AEAE</a>
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#novedades">Novedades</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+  <div class="hero">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="AEAE, inicio">
+        <img src="assets/logo-aeae.png" alt="AEAE" width="72" height="69">
+      </a>
+      <nav aria-label="Secciones">
+        <a href="#lista">La lista</a>
+        <a href="#plazos">Plazos</a>
+        <a href="#problemas">Problemas</a>
+      </nav>
+      <span class="pill">Borrador interno</span>
+    </header>
+
+    <div class="hero-text">
+      <p class="eyebrow">Congresos XXXII (León) y XXXIV (UPM)</p>
+      <h1>Trabajo recurrente de cada congreso</h1>
+      <p class="lead">Lo que la AEAE repite congreso a congreso, sacado de los informes, actas y reglamentos de la documentación de las dos asambleas. Es el punto de partida para la herramienta de coordinación.</p>
+      <ul class="stats">
+        <li><strong>29</strong> tareas</li>
+        <li><strong>9</strong> áreas</li>
+        <li><strong>91</strong> documentos leídos</li>
+      </ul>
+    </div>
+  </div>
 
   <main>
-    <section id="inicio" class="hero">
-      <span class="badge">Entorno de pruebas</span>
-      <h1>Web de pruebas de la AEAE</h1>
-      <p>Esta página es un banco de pruebas. El contenido es de ejemplo y puede cambiar en cualquier momento.</p>
-    </section>
+    <section id="lista">
+      <h2>La lista</h2>
+      <p class="section-note">«D-n» son días antes de la AGO, según el Reglamento de Régimen Interno y el pliego de condiciones de sede (este último aún es borrador).</p>
 
-    <section id="novedades">
-      <h2>Novedades</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Primera entrada</h3>
-          <p>Texto de ejemplo para probar el diseño de las tarjetas.</p>
+      <div class="filters" role="group" aria-label="Filtrar por área">
+        <button type="button" class="chip is-active" data-filter="todas" aria-pressed="true">Todas</button>
+        <button type="button" class="chip" data-filter="secretaria" aria-pressed="false">Secretaría</button>
+        <button type="button" class="chip" data-filter="todos" aria-pressed="false">Todos los cargos</button>
+        <button type="button" class="chip" data-filter="tesoreria" aria-pressed="false">Tesorería</button>
+        <button type="button" class="chip" data-filter="financiacion" aria-pressed="false">Financiación</button>
+        <button type="button" class="chip" data-filter="sede" aria-pressed="false">Sede y logística</button>
+        <button type="button" class="chip" data-filter="comunicacion" aria-pressed="false">Comunicación</button>
+        <button type="button" class="chip" data-filter="digital" aria-pressed="false">Transf. Digital</button>
+        <button type="button" class="chip" data-filter="actividades" aria-pressed="false">Actividades y RR. EE.</button>
+        <button type="button" class="chip" data-filter="puntual" aria-pressed="false">Puntual</button>
+      </div>
+
+      <div class="areas">
+        <article class="area" data-area="secretaria">
+          <header><h3>Secretaría</h3><span class="count">9</span></header>
+          <ol start="1">
+            <li>Circular del congreso y formulario de inscripción. <span class="when">~6 semanas antes</span></li>
+            <li>Convocatoria de la AGO y orden del día. <span class="when">D-30</span> <span class="when">D-14</span></li>
+            <li>Recoger los certificados de representatividad de cada sede y montar el listado de asistentes, observadores e invitados.</li>
+            <li>Recibir y numerar enmiendas y mociones internas; publicar la documentación a votar y los informes. <span class="when">D-7</span> <span class="when">D-3</span></li>
+            <li>Certificados de acuerdos de la Comisión Ejecutiva, la Comisión de Delegaciones y la Junta de Coordinación, para ratificar.</li>
+            <li>Durante la sesión: quórum, votaciones nominales por sede y recuentos, enmiendas transaccionales, acta de acuerdos.</li>
+            <li>Redactar el acta, recoger alegaciones y llevarla a aprobar en la siguiente asamblea.</li>
+            <li>Actualizar el registro de mociones internas y el control de asistencia de socios (4 AGO sin asistir permiten retirar derechos).</li>
+            <li>Cuando hay elecciones: candidaturas, proclamación, Mesa Electoral y certificado del cambio de ejecutiva ante el Registro Nacional de Asociaciones. <span class="when">D-5</span></li>
+          </ol>
         </article>
-        <article class="card">
-          <h3>Segunda entrada</h3>
-          <p>Texto de ejemplo para probar el diseño de las tarjetas.</p>
+
+        <article class="area" data-area="todos">
+          <header><h3>Todos los cargos y órganos</h3><span class="count">2</span></header>
+          <ol start="10">
+            <li>Informe de gestión con la misma estructura (realizado, en curso, pendiente, reuniones). <span class="when">días antes de la AGO</span></li>
+            <li>Traspaso al sucesor: manuales, cuentas y tareas pendientes. <span class="when">tras la AGO</span></li>
+          </ol>
         </article>
-        <article class="card">
-          <h3>Tercera entrada</h3>
-          <p>Texto de ejemplo para probar el diseño de las tarjetas.</p>
+
+        <article class="area" data-area="tesoreria">
+          <header><h3>Tesorería</h3><span class="count">3</span></header>
+          <ol start="12">
+            <li>Precios de inscripción, proformas y facturas por sede, control de cobros e impagos.</li>
+            <li>Informe económico y, una vez al año, cuentas y presupuesto.</li>
+            <li>Reembolso de gastos adelantados por miembros y subvención de inscripciones de la ejecutiva ampliada.</li>
+          </ol>
+        </article>
+
+        <article class="area" data-area="financiacion">
+          <header><h3>Financiación</h3><span class="count">3</span></header>
+          <ol start="15">
+            <li>Actualizar el dossier y los planes de colaboración; contactar empresas y seguir su estado. <span class="when">desde 20-24 semanas antes</span></li>
+            <li>Por cada empresa: convenio, factura, cobro, recogida de logo y ponente, y cumplimiento de contraprestaciones.</li>
+            <li>Agradecimiento, informe de repercusión y certificado. <span class="when">tras el congreso</span></li>
+          </ol>
+        </article>
+
+        <article class="area" data-area="sede">
+          <header><h3>Sede, Junta de Coordinación y Logística</h3><span class="count">4</span></header>
+          <ol start="18">
+            <li>Reuniones periódicas de la Junta de Coordinación. <span class="when">primera a D-90 o antes</span></li>
+            <li>Fechas, alojamiento y lista de habitaciones, restaurantes y menús con dietas, espacios, transporte, horario.</li>
+            <li>Entregas de la sede e informe final de la Junta de Coordinación. <span class="when">D-60</span> <span class="when">D-30</span> <span class="when">D-15</span></li>
+            <li>Elección de la sede de los congresos siguientes (candidaturas, presentación, votación) y firma del pliego.</li>
+          </ol>
+        </article>
+
+        <article class="area" data-area="comunicacion">
+          <header><h3>Comunicación</h3><span class="count">2</span></header>
+          <ol start="22">
+            <li>Identidad visual, carteles, roll-up, acreditaciones, portanombres, tarjetas de voto y merchandising.</li>
+            <li>Publicaciones en redes y nota de prensa. <span class="when">antes y después</span></li>
+          </ol>
+        </article>
+
+        <article class="area" data-area="digital">
+          <header><h3>Transformación Digital</h3><span class="count">2</span></header>
+          <ol start="24">
+            <li>Web del congreso en subdominio: tarifas, agenda, patrocinadores, formularios.</li>
+            <li>Actualizar el portal de transparencia y el directorio tras cada asamblea; altas y bajas de cuentas tras cada relevo.</li>
+          </ol>
+        </article>
+
+        <article class="area" data-area="actividades">
+          <header><h3>Actividades y Relaciones Externas</h3><span class="count">3</span></header>
+          <ol start="26">
+            <li>Dinámicas, equipos y sistema de puntos del congreso.</li>
+            <li>Posicionamientos: grupo de trabajo, borrador, enmiendas y aprobación.</li>
+            <li>Invitación a entidades y asociaciones; resumen de reuniones externas (CREUP, CIIA, colegios).</li>
+          </ol>
+        </article>
+
+        <article class="area" data-area="puntual">
+          <header><h3>Puntual pero frecuente</h3><span class="count">1</span></header>
+          <ol start="29">
+            <li>Alta de nuevos socios o titulaciones: solicitud firmada, memoria adjunta y votación.</li>
+          </ol>
         </article>
       </div>
     </section>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>Sección pendiente de contenido.</p>
+    <section id="plazos">
+      <h2>Plazos que fijan las normas</h2>
+      <p class="section-note">Días naturales respecto al inicio de la AGO (D).</p>
+      <ol class="timeline">
+        <li><span class="t">D-90</span><span>Primera reunión de la Junta de Coordinación; después, al menos una cada 30 días.</span></li>
+        <li><span class="t">D-60</span><span>La sede entrega fechas exactas, apoyos institucionales y presupuesto de alojamiento y restauración.</span></li>
+        <li><span class="t">D-30</span><span>Convocatoria de la AGO. La sede entrega el programa de actividades.</span></li>
+        <li><span class="t">D-15</span><span>La sede cierra restauración, espacios, equipamiento y merchandising.</span></li>
+        <li><span class="t">D-14</span><span>Orden del día.</span></li>
+        <li><span class="t">D-7</span><span>Documentación que se vota, enmiendas escritas incluidas. Informe de la Junta de Coordinación.</span></li>
+        <li><span class="t">D-5</span><span>Fin del plazo de candidaturas cuando hay elecciones.</span></li>
+        <li><span class="t">D-3</span><span>Documentación que no se vota (informes).</span></li>
+        <li><span class="t">D+3</span><span>Respuesta escrita a las interpelaciones pendientes.</span></li>
+        <li><span class="t">D+40</span><span>Fin del plazo para impugnar acuerdos ante la Comisión de Garantías.</span></li>
+      </ol>
+    </section>
+
+    <section id="problemas">
+      <h2>Problemas que más se repiten</h2>
+      <div class="problems">
+        <div class="problem"><h3>Documentación tarde</h3><p>Informes y documentos de la asamblea subidos fuera de plazo o entregados solo de palabra.</p></div>
+        <div class="problem"><h3>Actas atrasadas o perdidas</h3><p>Actas que se aprueban meses después y alguna que nunca llegó a redactarse.</p></div>
+        <div class="problem"><h3>Erratas a mano</h3><p>Referencias, fechas y plantillas rellenadas a mano, con códigos sin completar.</p></div>
+        <div class="problem"><h3>Tareas que se pierden</h3><p>Pendientes que no pasan de un mandato al siguiente; casi todos los cargos están escribiendo su manual.</p></div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>AEAE · Web de pruebas</p>
+    <div class="footer-inner">
+      <p>Documento interno de trabajo de la Asociación de Estudiantes de Aeronáutica y Espacio.</p>
+      <p class="muted">Fuente: documentación de la AGO de los congresos XXXII y XXXIV.</p>
+    </div>
   </footer>
+
+  <script>
+    (function () {
+      var chips = document.querySelectorAll('.chip');
+      var areas = document.querySelectorAll('.area');
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          var f = chip.dataset.filter;
+          chips.forEach(function (c) {
+            var on = c === chip;
+            c.classList.toggle('is-active', on);
+            c.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+          areas.forEach(function (a) {
+            a.hidden = f !== 'todas' && a.dataset.area !== f;
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

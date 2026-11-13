@@ -4,7 +4,7 @@ Repositorio privado para cosas de la AEAE.
 
 ## Estructura
 
-- `web/` — web de pruebas (HTML/CSS estático, sin dependencias).
+- `web/` — página estática con la lista de trabajo recurrente de cada congreso (HTML/CSS, sin dependencias).
 
 ## Ver la web en local
 
