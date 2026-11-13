@@ -1,0 +1,722 @@
+/*
+###############################################################################################################################################################
+###############################################################################################################################################################
+###                                                                                                                                                         ###
+###                                                     DEMOKRATIAN   http://demokratian.org                                                                ###
+###                                                   Copyright (C) 2020 CARLOS SALGADO WERNER                                                              ###
+###                              Este programa ha sido creado por Carlos Salgado Werner (http://carlos-salgado.es)                                          ###
+###                                                                                                                                                         ###
+### Este programa es software libre. Puede redistribuirlo y/o modificarlo bajo los términos de la Licencia GNU Affero General Public License según es       ###
+### publicada por la Free Software Foundation, bien de la versión 3 de dicha Licencia o bien de cualquier versión posterior.                                ###
+### Este programa se distribuye con la esperanza de que sea útil, pero SIN NINGUNA GARANTÍA, incluso sin la garantía MERCANTIL implícita o sin garantizar   ###
+### la CONVENIENCIA PARA UN PROPÓSITO PARTICULAR. Véase la Licencia GNU Affero General Public License para más detalles.                                    ###
+### Debería haber recibido una copia de la Licencia GNU Affero General Public License. Si no ha sido así, puede encontrarla en https://www.gnu.org/licenses ###
+###                                             -------------  English Version  --------------                                                              ###
+### This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the    ###
+### Free Software Foundation, either version 3 of the License, or (at your option) any later version.                                                       ###
+###                                                                                                                                                         ###
+### This program is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or        ###
+### FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more details. You should have received a copy of the GNU Affero        ###
+### General Public License along with this program.  If not, see https://www.gnu.org/licenses/.                                                             ###
+###                                             -----------------------------------------------                                                             ###
+### Si quieres participar en la mejora de este software ,eres libre de hacerlo,                                                                             ###
+### También puedes contactar con migo en el correo info@demokratian.org para trabajar en el desarrollo de forma colaborativa                                ###
+###                                                                                                                                                         ###
+###                                                 No puedes eliminar este aviso de licencia,                                                              ###
+###                  ni el enlace con el copy que se ve al ejecutar el programa en el pie de las páginas index.php y resto de páginas.                      ###
+###                                                                                                                                                         ###
+###############################################################################################################################################################
+###############################################################################################################################################################
+*/
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding0: 0;
+  margin: 0;
+  color: #5a5a5a;
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+h1, .h1 {
+    font-size: 52px;
+}
+
+h2, .h2 {
+    font-size: 36px;
+}
+
+h3, .h3 {
+    font-size: 28px;
+    margin: 20px 0 10px;
+}
+
+h4, .h4 {
+    font-size: 22px;
+    line-height: 30px;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+    font-weight: 300;
+    margin: 30px 0 15px;
+}
+
+.bg-blue{
+  background: #199EB8;
+}
+.bg-black{
+  background: #000000;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+#page img {
+    margin: 20px;
+}
+
+article#page{
+  overflow: hidden;
+}
+
+.meta {
+    color: grey;
+    font-style: italic;
+}
+/* change botstrap alert color*/
+.alert {
+    border: 0;
+    border-radius: 4px;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+.alert-primary {
+    /*color: #004085;*/
+    background-color: #007bff;
+    border-color: #b8daff;
+}
+.alert-info {
+    /*color: #0c5460;*/
+    background-color: #17a2b8;
+    border-color: #bee5eb;
+}
+.alert-success {
+    /*color: #155724;*/
+    background-color: #28a745;
+    border-color: #c3e6cb;
+}
+.alert-warning {
+    /*color: #856404;*/
+    background-color: #ffc107;
+    border-color: #ffeeba;
+}
+.alert-danger {
+    /*color: #721c24;*/
+    background-color: #dc3545;
+    border-color: #f5c6cb;
+}
+
+.alert button.close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -13px;
+    /*z-index: 1033;*/
+    background-color: #FFFFFF;
+    display: block;
+    border-radius: 50%;
+    opacity: .4;
+    line-height: 1px;
+    width: 25px;
+    height: 25px;
+    outline: 0 !important;
+    text-align: center;
+    padding: 3px;
+    font-weight: 300;
+}
+.alert i.simple-remove {
+    font-size: 12px !important;
+    display: inline-block;
+    opacity:0.5;
+}
+
+.white-icon{
+  color: #fff;
+    text-shadow: 1px 1px 1px #ccc;
+    /*font-size: 1.5em;*/
+
+}
+.card .alert.alert-icon {
+    padding-left: 65px;
+}
+.alert-with-icon{
+  left: 15px;
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+}
+.alert .close~span {
+    display: block;
+    max-width: 89%;
+}
+
+/* card
+-------------------------------------------------- */
+
+
+.card {
+    box-shadow: 0px 0px 10px 4px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    margin-bottom: 1rem;
+    position: relative;
+    display: -ms-flexbox;
+
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+
+}
+
+
+h1.card-title{
+    font-size: 36px;
+    margin: 15px;
+
+}
+
+.card-little{
+    margin: auto;
+    max-width: 600px;
+    border: solid 1px #ccc;
+    padding: 40px;
+}
+
+.card-body {
+
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+background-color: #199EB8;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+
+  height: 17rem;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+Forces image to be 100% width and not max width of 100%
+*/
+.carousel-item .img-fluid {
+  width:100%;
+  height:auto;
+}
+
+/*
+anchors are inline so you need ot make them block to go full width
+*/
+.carousel-item a {
+  display: block;
+  width:100%;
+}
+
+
+/*CUSTOMIZE THE NAVBAR */
+
+
+nav.navbar {
+    max-width: 1100px;
+    width: 1100px;
+    margin: auto;
+}
+
+/* Cabecera fija
+-------------------------------------------------- */
+.posicion {
+    position: relative;
+  /*  display: inline-block;*/
+}
+.posicion-cabecera{
+    position: absolute;
+    bottom: 10px;
+    color: #fff;
+    left: 15%;
+}
+
+
+.posicion> img {
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* SOCIAL MENU
+-------------------------------------------------- */
+#social-navbar{
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-right: 50px;
+}
+
+#social-navbar a {
+    background: transparent;
+}
+
+/* Style all font awesome icons */
+
+.social {
+  padding: 10px;
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+/* Add a hover effect if you want */
+.social:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+/* google-plus */
+.fa-google-plus{
+  background: #dd4b39;
+  color: white;
+}
+/* linkedin */
+.fa-linkedin{
+  background: #0082ca;
+  color: white;
+}
+/* instagram */
+.fa-instagram{
+  background: #2e5e86;
+  color: white;
+}
+/* pinterest */
+.fa-pinterest{
+  background: #c61118;
+  color: white;
+}
+/* youtube */
+.fa-youtube{
+  background: #ed302f;
+  color: white;
+}
+/* slack */
+.fa-slack{
+  background: #56b68b;
+  color: white;
+}
+
+.fa-tumblr{
+  background: #003651;
+  color: white;
+}
+/* Mail */
+.fa-envelope{
+  background: #4b515d;
+  color: white;
+}
+/* MAIN CONTENT
+-------------------------------------------------- */
+main{
+  margin-top: 3rem;
+}
+
+/* LOGIN FORM
+-------------------------------------------------- */
+
+.demokratian-access{
+  padding-bottom: 70px;
+}
+h4.demokratian-access{
+    padding-bottom: 70px;
+}
+
+.form-label {
+	font-size: 12px;
+	color: #5e9bfc;
+	margin: 0;
+	display: block;
+	opacity: 1;
+	-webkit-transition: .333s ease top, .333s ease opacity;
+	transition: .333s ease top, .333s ease opacity;
+}
+.form-control {
+	border-radius: 0;
+	border-color: #ccc;
+   	border-width: 0 0 2px 0;
+   	border-style: none none solid none;
+   	box-shadow: none;
+}
+.form-control:focus {
+	box-shadow: none;
+	border-color: #5e9bfc;
+}
+.js-hide-label {
+	opacity: 0;
+}
+.js-unhighlight-label {
+	color: #999
+}
+.btn-start-order {
+	background: 0 0 #ffffff;
+    border: 1px solid #2f323a;
+    border-radius: 3px;
+    color: #2f323a;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: inherit;
+    margin: 30px 0;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    transition: all 0.25s ease 0s;
+}
+.btn-start-order:hover,.btn-start-order:active, .btn-start-order:focus {
+	border-color: #5e9bfc;
+	color: #5e9bfc;
+}
+
+fieldset{
+  border: 1px solid #17a2b8;
+  padding: 4px 8px;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns  */
+.marketing{
+  margin-top: 100px;
+}
+.marketing .col-lg-4 {
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+
+/* Featurettes
+------------------------- */
+section.features {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.featurette {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: solid 1px #199eb8;
+}
+
+/* BLOCKTEXT CONTENT
+-------------------------------------------------- */
+.blocktext{
+  padding-top: 3rem;
+  padding-bottom:  3rem;
+}
+
+/* FOOTER CONTENT
+-------------------------------------------------- */
+
+
+.demokratian-footer{
+  padding: 30px 0;
+}
+
+.list-inline a {
+    color: #fff;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    margin-right: 15px;
+}
+
+.white{
+  color: #fff;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  margin-right: 15px;
+}
+a.white{
+  color: #fff;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  margin-right: 15px;
+}
+a.white:hover{
+  color: #ccc;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  margin-right: 15px;
+}
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 640px) {
+  /* Bump up size of carousel content */
+  .carousel-item{
+    height: 25rem;
+  }
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    /*font-size: 50px;*/
+  }
+}
+
+@media (min-width: 800px) {
+
+  .carousel-item{
+    height: 34rem;
+  }
+}
+@media (min-width: 990px) {
+
+  .carousel-item{
+    height: 40rem;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .featurette-heading {
+  /*  margin-top: 7rem;*/
+  }
+.carousel-item{
+  height: 48rem;
+}
+
+}
+
+
+/*menu*/
+
+nav {
+    display: block;
+    text-align: center;
+    z-index: 1000;
+  }
+  nav ul {
+    margin: 0;
+    padding:0;
+    list-style: none;
+  }
+  .nav a {
+    display:block;
+    background: #199EB8;;
+    color:#fff;
+    text-decoration: none;
+    padding: .8em 1.8em;
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+  /*  text-shadow: 0 -1px 0 #000;*/
+    position: relative;
+  }
+  .nav{
+    vertical-align: top;
+    display: inline-block;
+  /*  box-shadow: 1px -1px -1px 1px #000, -1px 1px -1px 1px #fff, 0 0 6px 3px #fff;*/
+  /*  border-radius:6px;*/
+  }
+  .nav li{
+    position: relative;
+  }
+  .nav > li {
+    float:left;
+    background: #199EB8;
+    margin-right: 1px;
+  }
+  .nav > li > a {
+    margin-bottom:1px;
+  /*  box-shadow:inset 0 2em .33em -.5em #555;*/
+  }
+  .nav > li:hover , .nav > li:hover >a{
+     /*border-bottom-color:orange;*/
+   }
+  .nav li:hover > a {
+    /*color:orange;*/
+    color:#000000;
+  }
+  /*   .nav > li:first-child  {
+      border-radius: 4px 0 0 4px;
+
+  }
+  .nav > li:first-child>a{
+    border-radius: 4px 0 0 0;
+
+  }*/
+  .nav > li:last-child  {
+  /**/
+    margin-right: 0;
+  }
+  /*   .nav > li:last-child >a{
+    border-radius: 0 4px 0 0;
+  }*/
+  .nav li li a {
+     margin-top:1px
+   }
+
+
+
+    .nav li a:first-child:nth-last-child(2):before {
+     content:"";
+     position: absolute;
+     height:0;
+     width: 0;
+     border: 5px solid transparent;
+     top: 50% ;
+     right:5px;
+   }
+
+
+
+
+
+   /* submenu positioning*/
+
+.nav ul {
+  position: absolute;
+ white-space: nowrap;
+  /*border-bottom: 5px solid  orange;*/
+  z-index: 1;
+  left: -99999em;
+}
+.nav > li:hover > ul {
+  left: auto;
+  padding-top: 5px  ;
+  min-width: 100%;
+}
+.nav > li li ul {
+  border-left:1px solid #fff;
+}
+
+
+.nav > li li:hover > ul {
+ /* margin-left: 1px */
+  left: 100%;
+  top: -1px;
+}
+/* arrow hover styling */
+.nav > li > a:first-child:nth-last-child(2):before {
+  border-top-color: #fff;  /* triangulo */
+}
+.nav > li:hover > a:first-child:nth-last-child(2):before {
+  border: 5px solid transparent;
+  /*border-bottom-color: orange;*/
+  margin-top:-5px
+}
+.nav li li > a:first-child:nth-last-child(2):before {
+  /* border-left-color: #aaa;*/
+  margin-top: -5px
+}
+.nav li li:hover > a:first-child:nth-last-child(2):before {
+  border: 5px solid transparent;
+/*  border-right-color: orange;*/
+  right: 10px;
+}
+
+.nav> li > ul> li{ /* segundo nivel del desplegable   */
+  width: 100%;
+  border-bottom: 4px #aaa solid;
+}
+
+.nav> li > ul> li> ul >li{  /* tercer nivel del desplegable   */
+  width: 100%;
+  border-bottom: 4px #aaa solid;
+}
+
+
+/*************************/
+
+
+@media screen and (max-width:767px) {
+  ul {
+    position: static;
+    display: none;
+    height: auto;
+  }
+  li {
+    margin-bottom: 1px;
+  }
+  ul li,
+  li a {
+    width: 100%;
+  }
+
+  nav ul li {
+    display: block;
+    width: 94%;
+  }
+  .nav > li:hover > ul {
+    display: block;
+  }
+
+/*********************/
+
+  ul {
+    position: static;
+    display: none;
+  }
+  li {
+    margin-bottom: 1px;
+  }
+  ul li,
+  li a {
+    width: 100%;
+  }
+
+}
