@@ -16,4 +16,10 @@ const base2 = readFileSync(join(dir, 'propuestas', 'diseno2.html'), 'utf8');
   const titulo = ['Arcos', 'Cuadrantes', 'Estelas'][i];
   writeFileSync(join(dir, 'propuestas', `diseno2-${'abc'[i]}-${n}.html`), base2.split('__V__').join(String(i + 1)).split('__NOMBRE__').join(titulo).split('__LOGO__').join(logo));
 });
-console.log('Diseños generados: 6');
+// Pantalla de acceso en el mismo estilo.
+const baseL = readFileSync(join(dir, 'propuestas', 'login.html'), 'utf8');
+['partida', 'ficha', 'marino'].forEach((n, i) => {
+  const titulo = ['Partida', 'Ficha', 'Marino'][i];
+  writeFileSync(join(dir, 'propuestas', `login-${'abc'[i]}-${n}.html`), baseL.split('__V__').join(String(i + 1)).split('__NOMBRE__').join(titulo).split('__LOGO__').join(logo));
+});
+console.log('Diseños generados: 9');
