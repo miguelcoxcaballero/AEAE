@@ -10,4 +10,10 @@ const logo = 'data:image/png;base64,' + readFileSync(join(dir, 'assets', 'logo-a
   const titulo = ['Membrete', 'Plano', 'Cartel'][i];
   writeFileSync(join(dir, 'propuestas', `diseno-${i + 1}-${n}.html`), base.split('__V__').join(String(i + 1)).split('__NOMBRE__').join(titulo).split('__LOGO__').join(logo));
 });
-console.log('Diseños generados: 3');
+// Segunda ronda: combinación de lo elegido en la primera.
+const base2 = readFileSync(join(dir, 'propuestas', 'diseno2.html'), 'utf8');
+['arcos', 'cuadrantes', 'estelas'].forEach((n, i) => {
+  const titulo = ['Arcos', 'Cuadrantes', 'Estelas'][i];
+  writeFileSync(join(dir, 'propuestas', `diseno2-${'abc'[i]}-${n}.html`), base2.split('__V__').join(String(i + 1)).split('__NOMBRE__').join(titulo).split('__LOGO__').join(logo));
+});
+console.log('Diseños generados: 6');
