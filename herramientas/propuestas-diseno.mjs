@@ -22,4 +22,8 @@ const baseL = readFileSync(join(dir, 'propuestas', 'login.html'), 'utf8');
   const titulo = ['Partida', 'Ficha', 'Marino'][i];
   writeFileSync(join(dir, 'propuestas', `login-${'abc'[i]}-${n}.html`), baseL.split('__V__').join(String(i + 1)).split('__NOMBRE__').join(titulo).split('__LOGO__').join(logo));
 });
-console.log('Diseños generados: 9');
+['lisa', 'columna', 'bisel'].forEach((n, i) => {
+  const titulo = ['Lisa', 'Columna', 'Bisel'][i];
+  writeFileSync(join(dir, 'propuestas', `login-${'def'[i]}-${n}.html`), baseL.split('__V__').join(String(i + 4)).split('__NOMBRE__').join(titulo).split('__LOGO__').join(logo));
+});
+console.log('Diseños generados: 12');
