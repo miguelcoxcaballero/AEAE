@@ -33,44 +33,70 @@ html = html.replace(/(src|href)="(assets\/[^"]+)"/g, (_, attr, ruta) => {
 const archivos = {};
 for (const p of listar(fuente)) archivos[relative(fuente, p).split('\\').join('/')] = readFileSync(p).toString('base64');
 
+const logoAcceso = 'data:image/png;base64,' + readFileSync(join(fuente, 'assets', 'logo-aeae.png')).toString('base64');
 const acceso = `<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>AEAE · Acceso</title>
+<title>Intranet AEAE</title>
+<link rel="icon" href="${logoAcceso}">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px;
-    background: linear-gradient(160deg, #10113b 0%, #29304c 40%, #3f5fc4 100%);
-    font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #29304c; }
-  form { width: 100%; max-width: 380px; padding: 32px 28px; background: #fff; border: 3px solid #29304c; border-radius: 22px; }
-  h1 { margin: 0 0 6px; font-size: 26px; }
-  p { margin: 0 0 20px; font-size: 14px; color: #666f7d; }
-  label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; }
-  input { width: 100%; padding: 11px 16px; border: 2px solid #29304c; border-radius: 999px; font: inherit; font-size: 16px; }
-  button { width: 100%; margin-top: 14px; padding: 11px 16px; border: 3px solid #29304c; border-radius: 999px;
-    background: #29304c; color: #fff; font: inherit; font-size: 15px; cursor: pointer; }
-  button:disabled { opacity: .6; cursor: wait; }
-  input:focus-visible, button:focus-visible { outline: 3px solid #3f5fc4; outline-offset: 2px; }
-  #aviso { min-height: 20px; margin: 12px 0 0; color: #b3261e; }
-  .recordada form { display: none; }
+html, body { height:100%; }
+body { margin:0; background:#f3f5fa; }
+.acc { display:grid; grid-template-columns:minmax(0,11fr) minmax(0,9fr); height:100vh; overflow:hidden; background:#f3f5fa; color:#2b2f3a; font:15px/1.45 "Trebuchet MS","Fira Sans","Segoe UI",Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+.acc * { box-sizing:border-box; }
+.acc-lado { position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; padding:40px 40px 54px 7vw; background:#29304c; clip-path:polygon(0 0,100% 0,calc(100% - 110px) 100%,0 100%); }
+.acc-lado h1 { position:relative; margin:0; color:#fff; font-size:40px; font-weight:700; letter-spacing:-.01em; line-height:1.15; }
+.acc-marca { position:absolute; left:5vw; top:50%; transform:translateY(-58%); color:transparent; -webkit-text-stroke:2.5px rgba(169,211,245,.24); font-size:21vw; font-weight:700; line-height:1; letter-spacing:-.02em; white-space:nowrap; pointer-events:none; user-select:none; }
+.acc-form { display:grid; place-items:center; padding:40px 40px 40px 0; overflow-y:auto; }
+.acc-caja { width:100%; max-width:360px; animation:acc-entra .3s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes acc-entra { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+.acc-logo { display:block; width:76px; height:auto; margin:0 0 30px; }
+.acc-sec { display:flex; align-items:center; gap:14px; color:#29304c; font-size:14px; font-weight:700; font-variant:small-caps; letter-spacing:.06em; }
+.acc-sec span { padding:6px 24px 6px 14px; background:#29304c; color:#fff; clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%); }
+.acc-sec::after { content:""; flex:1; height:2px; background:#29304c; }
+.acc-cuerpo { display:flex; flex-direction:column; align-items:flex-start; gap:18px; margin:26px 0 0; }
+.acc label { display:block; margin-bottom:6px; color:#29304c; font-size:13px; font-weight:700; letter-spacing:.04em; }
+.acc-campo { display:block; width:100%; padding:12px 14px; border:0; border-bottom:2px solid #29304c; border-radius:0; background:#fff; color:inherit; font:inherit; font-size:16px; transition:box-shadow .2s; }
+.acc-campo:focus { outline:none; box-shadow:0 7px 0 -4px #a9d3f5; }
+.acc-entrar { display:inline-flex; align-items:center; gap:10px; padding:11px 22px 11px 24px; border:0; background:#29304c; color:#fff; font:inherit; font-weight:700; cursor:pointer; clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%); transition:background .15s, padding .2s cubic-bezier(.2,.7,.2,1); }
+.acc-entrar:hover:not(:disabled) { background:#10113b; padding-right:30px; }
+.acc-entrar:disabled { opacity:.6; cursor:wait; }
+.acc-google { display:inline-flex; align-items:center; gap:12px; padding:10px 22px 10px 12px; border:1.5px solid #29304c; border-radius:999px; background:#fff; color:#29304c; font:inherit; font-weight:700; cursor:pointer; transition:box-shadow .2s, transform .15s cubic-bezier(.2,.7,.2,1); }
+.acc-google:hover:not(:disabled) { box-shadow:0 10px 22px -12px rgba(16,17,59,.55); transform:translateY(-1px); }
+.acc-google:disabled { opacity:.55; cursor:wait; }
+.acc-nota { margin:0; color:#737a8a; font-size:13px; }
+.acc-msg { margin:0; color:#b3261e; font-size:13px; line-height:1.4; }
+.acc-msg:empty { display:none; }
+.acc-pasos { display:flex; gap:8px; }
+.acc-pasos i { width:34px; height:5px; background:#d9deea; }
+.acc-pasos i.on { background:#29304c; }
+.acc :focus-visible { outline:3px solid #3f5fc4; outline-offset:2px; }
+.acc .acc-campo:focus-visible { outline:none; }
+@media (max-width:760px) {
+  .acc { grid-template-columns:1fr; grid-template-rows:auto 1fr; height:auto; min-height:100vh; overflow:visible; }
+  .acc-lado { min-height:200px; padding:26px; clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%); }
+  .acc-lado h1 { font-size:32px; }
+  .acc-marca { font-size:150px; }
+  .acc-form { padding:30px 22px; place-items:start center; overflow:visible; }
+}
+@media (prefers-reduced-motion: reduce) { .acc *, .acc *::before, .acc *::after { animation:none !important; transition:none !important; } }
+/* Con la contraseña ya puesta en esta pestaña no se enseña el formulario al recargar */
+.recordada .acc-caja { visibility:hidden; }
 </style>
 <script>
-  // Si la contraseña ya se puso en esta pestaña, no se enseña el formulario al recargar.
   try { if (sessionStorage.getItem('aeae-llave')) document.documentElement.className = 'recordada'; } catch (e) {}
 </script>
 </head>
 <body>
-<form id="acceso">
-  <h1>AEAE</h1>
-  <p>Documento interno. Introduce la contraseña para verlo.</p>
-  <label for="clave">Contraseña</label>
-  <input id="clave" type="password" autocomplete="current-password" required autofocus>
-  <button id="entrar" type="submit">Entrar</button>
-  <p id="aviso" role="alert"></p>
-</form>
+<div class="acc"><div class="acc-lado"><div class="acc-marca" aria-hidden="true">AEAE</div><h1>Intranet</h1></div>
+  <div class="acc-form"><div class="acc-caja"><img class="acc-logo" src="${logoAcceso}" alt="AEAE"><div class="acc-sec"><span>Acceso</span></div>
+    <form class="acc-cuerpo" id="acceso"><div style="width:100%"><label for="clave">Contraseña</label><input class="acc-campo" id="clave" type="password" autocomplete="current-password" required autofocus></div>
+      <button class="acc-entrar" id="entrar" type="submit">Entrar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button>
+      <p class="acc-msg" id="aviso" role="alert"></p><div class="acc-pasos" aria-label="Paso 1 de 2"><i class="on"></i><i></i></div></form></div></div></div>
 <script>
 (function () {
   var DATOS = "${cifrar(Buffer.from(html, 'utf8'), clave)}";
